@@ -6,8 +6,8 @@ export default async function Annotations() {
 
   return (
     <div>
-        {data.map((song, index) => (
-            <p>{song.name}</p>
+        {data.map((song) => (
+            <p key={song.id}>{song.name}</p>
           ))}
     </div>
   );
