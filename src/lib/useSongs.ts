@@ -1,9 +1,8 @@
 import { Song } from "../types";
-import env from "./environment";
 
 export const getSongs = async (): Promise<Song[]> => {
   try {
-    const res = await fetch(`${env.API_URL}/api/Song/all`, {
+    const res = await fetch(`http://${process.env.NEXT_PUBLIC_MUSIC_API_URL}/song/all`, {
       next: { revalidate: 0 },
     });
     if (!res.ok) {
@@ -20,7 +19,8 @@ export const getSongs = async (): Promise<Song[]> => {
 
 export const getSong = async (): Promise<Song> => {
   try {
-    const res = await fetch(`${env.API_URL}/api/Song/9`, {
+    //console.log(process.env.KEYCLOAK_CLIENT_ID);
+    const res = await fetch(`http://${process.env.NEXT_PUBLIC_MUSIC_API_URL}/song/1`, {
       next: { revalidate: 0 },
     });
     if (!res.ok) {

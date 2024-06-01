@@ -50,7 +50,7 @@ const WebSocketComponent = ({room}: WebSocketComponentprops) => {
             getData();
 
             const fetchAudio = async (fileName: string) => {
-                const response = await fetch(`http://localhost:5179/download${fileName}`); // Your API endpoint
+                const response = await fetch(`http://${process.env.NEXT_PUBLIC_SESSION_API_URL}/download/${fileName}`); // Your API endpoint
                 if (response.ok) {
                     const url = URL.createObjectURL(await response.blob());
                     setAudioSrc(url);
@@ -60,7 +60,7 @@ const WebSocketComponent = ({room}: WebSocketComponentprops) => {
             };
 
             var ws: WebSocket;
-            ws = new WebSocket(`ws://localhost:5179/ws?room=${room}`);
+            ws = new WebSocket(`ws://${process.env.NEXT_PUBLIC_SESSION_API_URL}/ws?room=${room}`);
             setSocket(ws);
 
             ws.onopen = () => {
