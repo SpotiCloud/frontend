@@ -8,7 +8,7 @@ WORKDIR /app
 COPY .env.docker .env
 
 # Copy package.json and install dependencies
-COPY package.json ./
+COPY package.json package-lock.json ./
 RUN npm install --production --frozen-lockfile
 
 # Copy application files
