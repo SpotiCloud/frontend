@@ -1,5 +1,5 @@
-import NextAuth from "next-auth";
- 
+import nextAuth from "next-auth";
+
 declare module "next-auth" {
   interface Session {
     token: Token;
