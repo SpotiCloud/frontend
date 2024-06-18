@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { getSong } from "../lib/useSongs";
 import { Song } from '../types';
+import { useSession } from 'next-auth/react';
 
 interface WebSocketComponentprops {
     room: number;
@@ -33,13 +34,15 @@ const WebSocketComponent = ({room}: WebSocketComponentprops) => {
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const progressBarRef = useRef<HTMLDivElement | null>(null); // Reference to the progress bar element
     const [audioSrc, setAudioSrc] = useState('');
+    const { data: session } = useSession();
   
     useEffect(() => {
         if(userInteracted)
             {
+                console.log(session.token.accessToken);
             const getData = async () => {
                 try {
-                const songData = await getSong();
+                const songData = await getSong(session.token.accessToken);
                 setData(songData);
                 fetchAudio(songData.adress);
                 } catch (error) {
@@ -50,7 +53,13 @@ const WebSocketComponent = ({room}: WebSocketComponentprops) => {
             getData();
 
             const fetchAudio = async (fileName: string) => {
-                const response = await fetch(`http://${process.env.NEXT_PUBLIC_SESSION_API_URL}/download/${fileName}`); // Your API endpoint
+                const response = await fetch(`http://${process.env.NEXT_PUBLIC_SESSION_API_URL}/session/download/${fileName}`, {
+                    method: 'GET',
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': `Bearer ${session.token.accessToken}`
+                    }
+                  });
                 if (response.ok) {
                     const url = URL.createObjectURL(await response.blob());
                     setAudioSrc(url);
