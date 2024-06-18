@@ -62,9 +62,15 @@ jobs:
       run:
         shell: bash
     needs: [build]
+    env:
+      NEXT_PUBLIC_MUSIC_API_URL: ${{ secrets.AKS_HOST_NAME }}
+      NEXT_PUBLIC_SESSION_API_URL: ${{ secrets.AKS_HOST_NAME }}
     steps:
-      - run: echo 'The test workflow has passed, start deployment'
       - uses: actions/checkout@v4
+      - name: Create .env.docker file
+        run: |
+          echo "ENV_VAR_1=${{ env.ENV_VAR_1 }}" >> .env.docker
+          echo "ENV_VAR_2=${{ env.ENV_VAR_2 }}" >> .env.docker
       - uses: azure/docker-login@v2
         with:
           login-server: ${{ secrets.ACR_LOGIN_SERVER }}
