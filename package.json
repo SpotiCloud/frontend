@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "serialize-javascript": "^6.0.2",
     "@types/next-auth": "^3.15.0",
     "all": "^0.0.0",
     "axios": "^1.7.2",
@@ -18,7 +17,6 @@
     "keycloak-js": "^25.0.0",
     "next": "^14.2.3",
     "next-auth": "^4.24.7",
-    "oidc-client": "^1.11.5",
     "prom-client": "^15.1.2",
     "react": "^18",
     "react-dom": "^18"
