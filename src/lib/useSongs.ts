@@ -2,7 +2,7 @@ import { Song } from "../types";
 
 export const getSongs = async (): Promise<Song[]> => {
   try {
-    const res = await fetch(`http://${process.env.NEXT_PUBLIC_MUSIC_API_URL}/song/all`, {
+    const res = await fetch(`http://${process.env.NEXT_PUBLIC_MUSIC_API_URL}/music/song/all`, {
       next: { revalidate: 0 },
     });
     if (!res.ok) {
@@ -20,7 +20,7 @@ export const getSongs = async (): Promise<Song[]> => {
 export const getSong = async (): Promise<Song> => {
   try {
     //console.log(process.env.KEYCLOAK_CLIENT_ID);
-    const res = await fetch(`http://${process.env.NEXT_PUBLIC_MUSIC_API_URL}/song/1`, {
+    const res = await fetch(`http://${process.env.NEXT_PUBLIC_MUSIC_API_URL}/music/song/1`, {
       next: { revalidate: 0 },
     });
     if (!res.ok) {
