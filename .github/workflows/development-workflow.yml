@@ -76,7 +76,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         run: |
-          npx snyk test --all-projects --json > snyk-output.json
+          npx snyk test --json > snyk-output.json
           echo "Snyk scan completed."
       
       - name: Upload Snyk results
