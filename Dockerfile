@@ -9,7 +9,7 @@ COPY .env.docker .env
 
 # Copy package.json and install dependencies
 COPY package.json package-lock.json ./
-RUN npm install --production --frozen-lockfile
+RUN npm ci
 
 # Copy application files
 COPY . .
