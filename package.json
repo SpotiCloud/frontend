@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "serialize-javascript": "^6.0.2",
     "@types/next-auth": "^3.15.0",
     "all": "^0.0.0",
     "axios": "^1.7.2",
