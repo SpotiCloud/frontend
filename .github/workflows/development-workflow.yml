@@ -75,9 +75,7 @@ jobs:
       - name: Snyk security scan
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        run: |
-          npx snyk test --all-projects --json > snyk-output.json || echo "Snyk scan failed"
-          cat snyk-output.json  # Output the content of snyk-output.json to see if there are any specific error messages
+        run: npx snyk test --all-projects --json > snyk-output.json
       
       - name: Upload Snyk results
         uses: actions/upload-artifact@v2
