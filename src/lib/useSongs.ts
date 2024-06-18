@@ -1,12 +1,8 @@
 import { Song } from "../types";
 
-export const getSongs = async (token): Promise<Song[]> => {
+export const getSongs = async (): Promise<Song[]> => {
   try {
-    const res = await fetch(`http://${process.env.NEXT_PUBLIC_MUSIC_API_URL}/music/song/all`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`
-      },
+    const res = await fetch(`http://${process.env.NEXT_PUBLIC_MUSIC_API_URL}/song/all`, {
       next: { revalidate: 0 },
     });
     if (!res.ok) {
@@ -21,16 +17,10 @@ export const getSongs = async (token): Promise<Song[]> => {
   }
 };
 
-export const getSong = async (token): Promise<Song> => {
+export const getSong = async (): Promise<Song> => {
   try {
     //console.log(process.env.KEYCLOAK_CLIENT_ID);
-    console.log(token);
-    const res = await fetch(`http://${process.env.NEXT_PUBLIC_MUSIC_API_URL}/music/song/1`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
+    const res = await fetch(`http://${process.env.NEXT_PUBLIC_MUSIC_API_URL}/song/1`, {
       next: { revalidate: 0 },
     });
     if (!res.ok) {
