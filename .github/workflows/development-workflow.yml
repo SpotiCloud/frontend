@@ -78,7 +78,7 @@ jobs:
         run: npx snyk auth $SNYK_TOKEN
       
       - name: Run Snyk security scan
-        run: npx snyk test --json > snyk-output.json
+        run: npx snyk test
       
       - name: Upload Snyk results
         uses: actions/upload-artifact@v2
