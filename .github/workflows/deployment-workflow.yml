@@ -103,5 +103,5 @@ jobs:
         run: az aks get-credentials -g ${{ secrets.AZURE_RESOURCE_GROUP }} -n ${{ secrets.AZURE_CLUSTER_NAME }}
 
       - name: Restart deployment
-        run: kubectl rollout restart deployment/frontend
+        run: kubectl rollout restart deployment/frontend -n ${{ secrets.AKS_NAMESPACE }}
         continue-on-error: true # If AKS cluster is not available, pipeline should not fail
