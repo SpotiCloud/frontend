@@ -68,6 +68,7 @@ jobs:
         run: |
           echo "NEXT_PUBLIC_MUSIC_API_URL=${{ env.NEXT_PUBLIC_MUSIC_API_URL }}" >> .env.docker
           echo "NEXT_PUBLIC_MUSIC_API_URL=${{ env.NEXT_PUBLIC_MUSIC_API_URL }}" >> .env.docker
+          cat .env.docker 
       - uses: azure/docker-login@v2
         with:
           login-server: ${{ secrets.ACR_LOGIN_SERVER }}
