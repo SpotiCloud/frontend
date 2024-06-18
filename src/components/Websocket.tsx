@@ -69,7 +69,7 @@ const WebSocketComponent = ({room}: WebSocketComponentprops) => {
             };
 
             var ws: WebSocket;
-            ws = new WebSocket(`ws://${process.env.NEXT_PUBLIC_SESSION_API_URL}/ws?room=${room}`);
+            ws = new WebSocket(`ws://${process.env.NEXT_PUBLIC_SESSION_API_URL}/session/ws?room=${room}`);
             setSocket(ws);
 
             ws.onopen = () => {
