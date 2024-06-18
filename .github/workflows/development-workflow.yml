@@ -71,13 +71,14 @@ jobs:
       
       - name: Install Snyk CLI
         run: npm install -g snyk  # Install Snyk CLI globally
-      
-      - name: Snyk security scan
+
+      - name: Authenticate with Snyk
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        run: |
-          npx snyk test --all-projects --json > snyk-output.json
-          echo "Snyk scan completed."
+        run: npx snyk auth $SNYK_TOKEN
+      
+      - name: Run Snyk security scan
+        run: npx snyk test
       
       - name: Upload Snyk results
         uses: actions/upload-artifact@v2
