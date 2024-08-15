@@ -11,7 +11,7 @@
   "dependencies": {
     "@types/next-auth": "^3.15.0",
     "all": "^0.0.0",
-    "axios": "^1.7.2",
+    "axios": "^1.7.4",
     "express": "^4.19.2",
     "jwt-decode": "^4.0.0",
     "keycloak-js": "^25.0.0",
